@@ -8,12 +8,16 @@ const cors = require('cors'); // Import the cors package
 dotenv.config();
 
 const app = express();
-app.use(cors()); // Enable CORS for all routes and origins
+app.use(cors({
+  origin: 'https://zesty-strudel-f09958.netlify.app', // Allow requests from your frontend origin
+  methods: ["GET", "POST"],
+  credentials: true
+})); // Enable CORS for all routes and origins
 
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: "*", // Allow requests from the frontend server
+    origin: "https://zesty-strudel-f09958.netlify.app", // Allow requests from the frontend server
     methods: ["GET", "POST"]
   }
 });
