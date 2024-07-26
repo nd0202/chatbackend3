@@ -13,7 +13,7 @@ app.use(cors()); // Enable CORS for all routes and origins
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: "http://localhost:3000", // Allow requests from the frontend server
+    origin: "*", // Allow requests from the frontend server
     methods: ["GET", "POST"]
   }
 });
